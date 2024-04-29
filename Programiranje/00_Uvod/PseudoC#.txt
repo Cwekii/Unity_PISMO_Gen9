@@ -305,6 +305,79 @@ cHP = maxHP; //100
 cHP -= bShoot; //80
 cHP -= hShoot; //40 hp ostalo, živi smo!!!
 
+28.) Igrač Pero ima 4 zlatne lopte, a Marko 6 zlatnih lopti. Igrač Pero je Marku oteo jednu zlatnu loptu te mu se poslije doma nasao sa sestrom doma i usput vratio svoju loptu i ukrao dvije Perine.
+Koliko lopti ima na kraju Marko, koliko Pero i čija je sestra izgubila nevinost?
+
+int pero = 4;
+int marko = 6;
+
+pero += 1;
+marko -= 1;
+marko += 3;
+pero -= 3;
+
+29.) Igrač ima 20 mana. Iskoristio je vatrenu magiju koja vrijedi 5.5 mana, a nakon toga uzastopno dvije ledene magije koje vrijede 3 mane.
+Koliko je mane ostalo?
+Napisi programski.
+
+float mana = 20f;
+float vatrenaMagija = 5.5f;
+int ledenaMagija = 3;
+
+mana -= vatrenaMagija;
+mana -= ledenaMagija * 2;
+
+//ostalo je 8.5 mane
+
+30.) Na prvenstvu se natječu Nizozemska, Hrvatka, Španjolska i Italija. Svaka pobjeda donosi 2 boda. Hr je pobjedila Nizozemsku, Italiju i Španjolsku te nakon utakmice sa Španjolskom zbog pijanstva dobila 2 kaznena boda.
+Koliko bodova ima Hrvatska?
+
+int bod = 2;
+int hrv;
+int brojUtakmica = 3;
+int kazneniBod = 2;
+
+hrv+= brojUtakmica * bod;
+hrv -= kazneniBod;
+
+31.) Saša je imao 10 lopti. Dvije je dao psu, Pas je jednu pojeo, koliko lopti je ostalo psu?
+
+int saša = 10;
+int pas = 0;
+
+saša -= 2;
+pas += 2;
+pas--;
+
+32.) Mini ima tank od 60L. Do Novske potroši 20L, cestarina u jednom smjeru je 40kn. Koliko će novaca izkamatariti tjedno ako putujemo u oba smjera autoputom i cijena goriva je 9kn/L.
+
+int putniTrošak;
+int troši = 20;
+int cestarina = 40;
+int cjGoriva = 9;
+
+putniTrošak = (2 * troši * cjGoriva + 2 * cestarina) * 7; // 3080 kn tjedno
+
+33.) Krešo ima 10 jabuka. Ivan mu kriomice pojede 2 jabuke. Koliko je jabuka pojeo Denis, a koliko je ostalo Kreši?
+
+int krešo = 10;
+int ivan;
+int denis;
+
+krešo -= 2;
+
+//Krešo ima 8 jabuka, denis ne znamo.
+
+34.) Igrač ima 50 HP i 30 mane. Zatim na protivnika baci spell koji troši 3.5 mane, a istivremeno ga pogađa protivnikov spell koji radi 20 dmg.
+Istovremeno nosis shield koji blokira 50% od tog spella. 
+Koliko HP-a i mane ima igrač?
+
+float hp = 50f;
+float mana = 30f;
+
+mana -= 3.5f; // 26.5 mane
+hp -= 20f * 0.5f; // 40 hp 
+
 DZ:
 28. - 34. i 38 
 
@@ -366,6 +439,45 @@ debili += 3; //došlo je 3 debila sa blendera
 debili--; //kao da piše debili -= 1;
 
 //17 debila nisu vise debili nego game developeri, što dođe na isto
+
+38.)Iskomentirajte i riješite zadatak: 
+Igrač ima 100 max HP i 50 movement pointa, 1 potion koji ga heal-a 10% max HP-a
+Ima dvije vrste napada, specijalni koji radi 50 dmg i troši 30 movement pointa i obicni napad koji radi 30 dmg i ne košta ništa.
+Monster ima 126 hp-a i tuce 30 dmg.
+Tuku se naizmjence po jedan napad po krugu, potion ne troši krug i igrac napada prvi.
+Kombat je gotov kada igrač ili monster umru.
+Tko umre prvi ako igrač koristi sve što mu je na raspolaganju?
+
+int hp = 100;
+int movePoint = 50;
+int potion = hp / 10;
+int potioncount = 1;
+int special = 50;
+int basic = 30;
+int monsterHP = 126;
+int monsterAtt = 30;
+
+while(hp > 0 && monsterHP > 0){
+if(movePoint >= 30)
+ movePoint -= 30;
+monsterHP -= special;
+}
+
+else {
+monsterHP -= basic;
+}
+
+if(monsterHP > 0){
+	if(HP + postion - monsterAtt > 0 && potionCount == 1){
+		hp -= monsterAtt;
+		hp += potion;
+		potionCount--;
+	}
+
+	else{
+		hp-= monsterAtt;
+	}
+}
 
 **UVJETI**
 Što je uvjet?
@@ -445,6 +557,343 @@ else if(x * y == 100)
 	x += x;
 	y += y;
 }
+
+
+41.) Igracev health je 30. Regeneracija ce mu krenuti ako mu je health ispod 20 i povecati ce se za 12.
+
+int hp = 30;
+int regen = 12;
+
+ if(hp < 20)
+ {
+   hp += regen;
+ }
+
+42.) Igracev health je 31. Regeneracija ce mu krenuti ako mu je health ispod 20 i povecati ce se za 12. Igrac prvo prima dmg od 9. Zatim je popio potion koji mu je vratio 10 hp-a i potom je primio critical strike koji mu je skinuo 26hp-a. Da li se igracu dogodio health regen i ako je kada?
+Napisati programski i komentirajte kada se dogodila regeneracija.
+
+int hp = 31;
+int regen = 12;
+int dmg = 9;
+int potion = 1;
+int potionRegen = 10;
+int strike = 26;
+
+
+ if(hp < 20)
+ {
+   hp += regen;
+ }
+
+hp -= dmg; // 22
+// provjera  ide li regeneracija
+potion--;
+hp += potionRegen; // 32
+// provjera  ide li regeneracija
+hp -= strike // 6
+// provjera  ide li regeneracija
+//ide regeneracija
+
+43.) Igrac jedna i dva su imali 100hp-a. Igrac dva je udario igraca jedan te mu oduzeo 25hp, igrac jedan kontra napadom ostecuje igraca dva za 14 hp, te regenerira sebe za 10 hp. Koliko koji igrac ima hp-a?
+
+int p1 = 100;
+int p2 = 100;
+
+p1 -= 25;
+p2 -= 14;
+p1 += 10;
+
+//Player one ima 85hp, a player two ima 86 hp-a
+
+
+44.) Pokemon evoluira kada dodje na 16 level. Za doci na 16 level mu je potrebno 4561 xp-a. Pocetni level je 1 i XP je 0.
+Odradio je 25 borbi i po borbi je dobio 25 xp a zatim jos 25 borbi gdje je dobio 93xp po borbi. Napraviti provjeru ima li dovoljno xp za evoluciju, ako nema gubi sav xp, a ako ima onda mu je level 16.
+
+int xp = 0;
+int level = 1;
+int evoLevel = 16;
+int evolXP = 4561;
+int fightOne = 25;
+int fightTwo = 93;
+
+xp += 25 * fightOne; // 625
+xp += 25 * fightTwo; // 2325
+
+if(xp >= evolXP)
+{
+   level = evoLevel;
+}
+
+else 
+{
+  xp = 0;
+}
+
+
+45.) Kapetan Miki ima 10 hp, ako primi damage veći od 5, a da ga to nece ubiti onda se Miki naljuti i njegov HP bude 20.
+
+
+int mikiHP = 10;
+int dmg;
+
+if(dmg > 5 && mikiHP > dmg)
+{
+   
+   mikiHP = 20;
+}
+
+
+46.) A je jacine 5, a B je jacine 17, ako je njihova razlika veca od 10 neka se broj A poveca za B, a ako je manja ili jednaka neka se B poveca za A.
+
+int A = 5;
+int B = 17;
+
+if(A - B > 10 || B - A > 10)
+{
+  A += B;
+}
+
+else if (A - B <= 10 || B - A <= 10)
+{
+   B += A;
+}
+
+47.) Imate varijablu X. Ako je X veci od 10 neka se uveca za 20, a ako je X manji od 10 neka se umanji za 9. U ostalim slucajevima neka se X pomnozi sam sa sobom.
+
+int X;
+
+if(X > 10)
+{
+   X += 20;
+}
+
+else if (X < 10) 
+{
+  X -= 9;
+}
+
+else 
+{
+  X *= X;
+}
+
+48.) U šumi je 6 elfov, 5 gnomova i 10 orkova, ako je zbroj elfova i gnomova veći ili jednak orkovima, broj elfova se uveća za njihov  broj (poduplaju se), a ako je njihov zbroj manji, orkovi pojedu 50% gnomova i 20% elfova.
+NAPOMENA, ne moze se pojesti decimalno elfova ni gnomova.
+
+int elf = 6;
+int gnom = 5;
+int orc = 10;
+
+if(elf + gnom >= orc)
+{
+ elf += elf; // elf *=2;
+}
+
+else if (elf + gnom < orc)
+{
+ elf = (int)(elf * 0.8f);
+ gnom = (int)(gnom * 0.5f);
+}
+
+49.) Pocetna vrijednos varijable je 830, X je 69,Y je 538. Ukoliko je umnožak x i y manji od 1000 i vrijable vrijednosti 830 zbrojena sa y veca od 1000, neka se varijabla sa pocetnom vrijednoscu 830 smanji za 100. Ukoliko je umnozak veci (samo to je uvijet), neka se pocetna varijabla poveca za 100. U svim ostalim slucajevima neka se pocetna varijabla poknozi sa 100.
+
+int pocVar = 830;
+int x = 69;
+int y = 538;
+
+if(x * y < 1000 && pocVar + y > 1000)
+{
+ pocVar -= 100;
+}
+
+else if (x * y > 1000)
+{
+  pocVar += 100;
+}
+
+else 
+{
+ pocVar *= 100;
+}
+
+** VAR VARIJABLA
+
+var:
+- vrsta varijable koja se prilagođava unosu
+- ne moze se definirati u početku
+- koristi se samo unutar metode/petlje za privremenu vrijednost
+
+npr. 
+Neka se rezultat mnozenja x i y poveca za 10 ako je x veci od 5 i spremite u varijablu rez, ali to odradite u 2 koraka
+
+float x = 10.5f
+int y = 77;
+float rez;
+
+rez = x * y;
+
+if (x > 5)
+{
+ var privremeno = x * y;
+ rez = privremeno + 10;
+}
+
+**METODE**
+- metoda je skup naredbi koje se trebaju odraditi u odredjenim uvijetima i intervalu
+
+Kljucne metode u unity-u
+
+-- Awake
+	- odvija se 0 frame
+	- dogadja se prije stvaranja bilo kakvih objekata na sceni
+	- izvrsava se samo jednom
+-- Start
+	- izvrsava se na prvi frame
+	- izvrsava se samo jednom
+-- Update
+	- izvrsava jednom po frame-u
+
+pisanje metoda:
+
+void NazivMetode()
+{
+	linija narede;
+}
+
+* vidljivost metodi/varijabli
+- public - ispred vrste varijable kojoj omogucavamo da mi kao developeri mozemo unositi i mjenjati varijable u Unity Inspektoru ili pozivati iz drugih skripti
+- private - ispred vrste varijable i onemogucava vidljivost i promjene vrijednosti iz Unity Inspektora i pozivanje iz drugih skripti. Ako ispred varijable ne pise nista, automatski je private.
+
+npr.
+
+public int x = 10; // vidimo u inspektoru i mozemo mjenjati vrijednost
+private int y = 5;  // ne vidimo u inspektoru i ne mozemo ju mjenjati izvan klase
+
+
+**Debugiranje**
+
+- postupak pruzanja informacija developeru ima li greške u kodu ili ispis rada programa u konzoli
+- Osnovno - Debug.Log("");
+- Debug -> debugiraj (provjeri)
+- Log -> Ispiši u konzoli
+- ("") - unutar navodnika teks za ispis, posije varijabla za ispis ( dodaje se pomocu znaka +)
+
+npr. 1
+public int x;
+public int y;
+
+void Start()
+{
+  var rez = x * y;
+  Debug.Log("Rezultat je: " + rez);
+  Debug.Log($"Rezultat je: {rez}");
+}
+
+
+npr. 2
+
+void Start()
+{
+  Debug.Log("Odvio se Start");
+}
+
+61.) U startu se zbroje 2 javna broja, neka se u konzoli ispiše njihov zbroj.
+
+public int x;   // public int x,y;
+public int y;
+
+void Start()
+{
+  var zbroj = x + y;
+  Debug.Log("Rijesenje je: " + zbroj);     //Debug.Log($"zbroj: {x + y} \n zbroj 2: {zbroj2} ");
+}
+
+62.) Zbrojite u startu x koje je 17.2 i y koji je javan broj. Neka se rezultat spremi u varijablu "banana" i neka se ispiše u konzoli.
+
+private float x = 17.2f;
+public float y;
+private float banana;
+
+void Start()
+{
+  banana = x + y;
+  Debug.Log(banana);
+}
+
+63.) Povecajte x koji 5 i svaki frame ga povecajte za 5.
+
+int x = 5;
+
+void Update()
+{
+  x += 5;
+}
+
+64.) Neka je x 6, a y je 7 i njihov zbroj neka se izracuna u startu, a onda svaki frame neka se rezultat uveca za x.
+
+int x = 6;
+int y = 7;
+int z;
+
+void Start()
+{
+  z = x + y;
+}
+
+void Update()
+{
+  z += x;
+}
+
+65.) Neka je x 8, a y je javni broj i njihov zbroj neka se izracuna u startu, a onda svaki frame neka se rezultat poveca za polovicu x varijable.
+
+int x = 8;
+public int y;
+int z;
+
+void Start()
+{
+  z = x + y;
+}
+
+void Update()
+{
+  z += x / 2;
+}
+
+66.) Ako je vrijednost x -3.6, a vrijednost y je javna. Ako je zbroj veci od 20 neka se ispise "To legendo", a ko je manji ili jednak neka se ispise "falia si budalo"
+
+float x = -3.6f;
+public int y;
+
+void Start()
+{
+  if(x + y > 20)
+	{
+	  Debug.Log("To legendo");
+	}
+
+  else if (x + y <= 20)
+	{
+	  Debug.Log("falia si budalo");
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
