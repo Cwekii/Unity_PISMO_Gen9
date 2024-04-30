@@ -716,6 +716,18 @@ else
  pocVar *= 100;
 }
 
+50.)Super Mario je imao 3 života na početku. Izgubio je 2. Dobio je jedan život tokom nivoa i dobio jedan nakon što je prešao nivo. Napiši programski.
+
+51.)X je 15, Y je 100, ako je X izmedu 13 i 19 (ukljceni su i 13 i 19) povecaj Y za 20%. A ako nije onda Y smanji za 13%. Ne smiju se spremati vrijednosti u decimalnom zapisu.
+
+52.)Cilj igre je skupiti 4 objekta, prsten, pehar, zlatnik i dijamant. Sa svakim skupljenim itemom aktivira se jedan boss, a kada se skupi svih 4 itema, igra je pređena. Odmah skupljate prsten, te dalje tim redosljedom. Sa koliko bossova ste se borili dok niste prešli igru?
+
+53.)Vrijednost "nice" je 69, a vrijednost "blaze" je 420, ako je zbroj tih vrijednosti pomnožen sa 2 veći od 1300 neka se nice podupla, a ako je manji ili jednak 1250 neka se blaze podupla.
+
+54.) Programski zapisi 11.79 + 9.01 = 19.80;
+
+
+
 ** VAR VARIJABLA
 
 var:
@@ -880,14 +892,574 @@ void Start()
 }
 
 
+67.) U startu zbrojite dvije javne varijable od kojih se jedna zove "y". Neka se svaki frame x poveca za 5% iznosa y varijable. Svaki frame ponovno zbrojite x i y te ispišite vrijednost zbroja.
+
+
+public float x;
+public float y;
+float z;
+
+void Start()
+{
+  z =  x + y;
+}
+
+void Update()
+{
+  x += y * 0.05f;
+  Debug.Log(x + y);
+}
+
+68.)Neka se u metodi Start ispise "Ja sam Start", u metodi Awake "Ja sam mali Awake", te u konacnici neka se svaki frame ispisuje "Moje ime je medvjedic Lino".
+
+void Awake()
+{
+  Debug.Log("Ja sam mali Awake");
+}
+
+void Start()
+{
+  Debug.Log("Ja sam Start");
+}
+
+void Update()
+{
+  Debug.Log("Moje ime je medvjedic Lino");
+}
+
+69.) Noice!
+
+70.) Povecajte javnu varijablu X za jedan svaki frame. Neka se također svaki frame ispiše "Ja imam " + x + "godina".
+
+public int x;
+
+void Update()
+{
+  x++;
+  Debug.Log($"Ja imam {x} godina.");
+}
+
+71.)Imajte dva javna cijela broja. Njihov rezultat zbrajanja se sprema u javnu varijablu. Postupak je sljedeći. Svaki frame se prvi cijeli broj mora povecati za 1, potom se racuna rezultat zbrajanja prvog broja i drugog. Ako je rezultat manji od 500 ispisuje se ("Manji"), ako je između 500 i 2000 ispisuje se "Prosječan", a ako je veći ispisuje se "Največi"
+
+72.) x ima vrijednost 7, ali je privatna varijabla. Napišite da se u startu ispiše vrijednost x varijable.
+
+private int x = 7;
+
+void Start()
+{
+  Debug.Log(x);
+}
+
+73.) U pocetku zbroji javnu vrijednost koja prima vrijednosti cijelih brojeva i javnu vrijednost koja prima vrijednost decimalnih brojeva. Ako je njihov zbroj 10 neka se svaki frame ispise "Banana", a ako je manj od 10 neka se ispise "Mrkvica". Obavezno koristiti samo jednu metodu.
+
+public int x;
+public float y;
+
+void Update()
+{
+  if(x + y == 10) {
+
+    Debug.Log("Banana");
+
+  }
+
+ else if(x + y < 10)
+  {
+     Debug.Log("Mrkvica");
+  }
+}
+
+74.) Napišite skriptu gdje se zbrajaju dva javna broja u metodi start i ispisuje im se rezultat na primjer: Rezultat zbrajanja brojeva 8 i 9.5 je 17.5.
+
+
+public float x;
+public float y;
+public float z;
+
+void Start()
+{
+   z = x + y;
+  Debug.Log("Rezultat zbrajanja brojeva" + z + "=" + x + "+" + y); //  Debug.Log($"Rezultat zbrajanja brojeva: {z} = {x} + {y}")
+}
+
+**bool**
+
+- Vrsta varijble koja pohranjuje u sebe iskljucivo 2 vrijednosti, a to su true ili false (tocno ili netocno)
+- tehnicki je 0 ili 1
+- ako je bool null onda je false
+
+npr.
+bool banana = false;
+bool died = true;
+bool endGame; // ako ne pise vrijednost onda je false
+bool zmajcek; //false
+
+npr. promjena boola sa "!"
+
+bool magla = true;
+
+void Start()
+{
+  !magla; //obrnuta vrijednost, u ovom slucaju false
+  
+}
+
+75.)Neka se zbrajaju dva javna broja, ako je njihov zbroj veci od 15 neka bool endGame postane true, a ako su manji ili jednaki neka je false. Ako je endGame true neka se u konzoli ispise da je igra zavrsena, a ako je false neka se ispise da si prezivio. Ovo napravite u vlastitoj metodi.
+
+
+public int x;
+public int y;
+bool endGame;
+
+void Start()
+{
+  if(x + y > 15)
+	{
+	  endGame = true;
+	}
+  else 
+       {
+         endGame = false;
+	}
+
+CheckEndGameValue();
+}
+
+void CheckEndGameValue()
+{
+  if(endGame == true)
+	{
+   	   Debug.Log("Igra je zavrsena");
+	}
+
+  else 
+	{
+	  Debug.Log("Prezivio si");
+	}
+}
+
+76.) Neka su dva javna broja float vrijednosti. Za pocetne vrijednosti neka budu 12.3 i 18.2. Definirajte i privatni bool banana. Banana je u pocetku false. Ako je umnozak dva broja veci ili jednak 100 neka banana postane true i u konzoli neka ispise "Banana je pojedena", ako je banana false neka se ispise "Banana je citava".
+Rijesite na dva nacina: 1. koristeci samo metodu awake. 2 koristeci metodu start i vlastitu metodu.
+
+public float x = 12.3f;
+public float y = 18.2f;
+private bool banana = false;
+
+void Awake()
+{
+  if(x * y >= 100)
+	{
+	  banana = true;
+	  Debug.Log("Banana je pojedena");
+	}
+  else 
+	{
+	  Debug.Log("Banana je citava");
+	}
+}
+
+-------------------------------------
+
+public float x = 12.3f;
+public float y = 18.2f;
+private bool banana = false;
+
+void Start()
+{
+  CheckBanana();
+}
+
+void CheckBanana()
+{
+   if(x * y >= 100)
+	{
+	  !banana;
+	  Debug.Log("Banana je pojedena");
+	}
+  else 
+	{
+	  Debug.Log("Banana je citava");
+	}
+}
+
+77.)Napisite skriptu gdje cete imati start metodu i metodu naziva vašeg imena. U startu neka se pozove metoda vašeg imena. Metoda vašeg imena neka ima naredbu da ispiše u konzoli "Ja sam unity developer i pametniji sam nego godot developer".
+
+void Start()
+{
+  VaseIme();
+}
+
+void VaseIme()
+{
+  Debug.Log("Ja sam unity developer i pametniji sam nego godot developer");
+}
+
+78.)Napišite skriptu koja u sebi nosi 4 javna floata. U startu se radi provjera matematickog zapisa:
+x + y * (a / b) - x / a * 18 * b - x + y = rez
+Ako je rezultat veci od drugog zapisa:
+x - y / (a * b) + x * a / 18 / b + x - y + 23 = rez
+Onda neka se u updateu rezultat povecava za jedan i ispisuje "Ja sam rezultat: " + rezultat
+
+
+79.) Napisite skriptu gdje imate jedan bool i jedan javni broj. Ako je javni broj razlicit od 18 onda neka se pozove metoda MjenjajMe koja mjenja vrijednost tako da ako je bool bio true, da bude false, a ako je bio false da ga pretvori u true.
+
+public int x;
+bool y;
+
+void Start()
+{
+  if(x != 18)
+	{
+	  MjenjajMe();
+	}
+}
+
+void MjenjajMe()
+{
+  y = !y;
+}
+
+80.)Napisite skriptu koja mnozi dva javna broja. Ako je njihov umnozak razlicit od 100 ili je veci od 0 neka se pozove druga metoda naziva JaSamMetodaDva u kojoj ce se raditi dijeljenje prvog broja sa drugim i ako je rezultat dijeljenja manji od 100 neka se ispise "Ja sam MVP", a ako je bilo koje drugo rijesenje neka se u konzoli ispise "Ja sam n00b".
+
+public float x;
+public float y;
+
+void Start()
+{
+  if(x * y != 100 || x * y > 0)
+	{
+	  JaSamMetodaDva();
+	}
+}
+
+void JaSamMetodaDva()
+{
+	if(x / y < 100)
+	{
+	  Debug.Log("Ja sam MVP");
+	}
+	else
+	{
+	  Debug.Log("Ja sam n00b");
+	}
+}
+
+81.) Imate javni bool. Ako je taj bool jednak true u startu neka se uspise "Volim mrkvu", a ako je razlicit od true neka se ispise "Volim pisati metode".
+
+
+public bool b;
+
+void Start()
+{
+   if(b == true)
+	{
+	  Debug.Log("Volim mrkvu");
+	}
+  else 
+	{
+	  Debug.Log("Volim pisati metode");
+	}
+}
+
+
+82.) Ispisite u konzoli x ako je x 10 i bool true, a ako je bool false i y 3 u konzoli ispisite y.
+
+int x;
+int y;
+bool b;
+
+void Start()
+{
+  if(x == 10 && b == true)
+	{
+	   Debug.Log(x);
+	}
+  else if(y == 3 && b == false)
+	{
+	  Debug.Log(y);
+	}
+}
+83.) Uvecaj int x za 1 svaki frame ako je varijabla bool true.
+
+
+int x;
+bool y;
+
+void Update()
+{
+  if (y == true)
+	{
+	  x++;
+	}
+}
+
+
+84.)
+
+** for loop**
+- uvijek zadovoljen, naredba se izvršava
+- int i => brojač, ne mora se zvati i ali se tako najčešće zove
+- uvjet => koji mora biti zadovoljen
+- inkrement => utjece na brojac, naredba s kojom povecavamo brojac
+- dekrement => utjece na brojac, naredba s kojom smanjujemo brojac
 
 
 
+for(brojac; uvjet; inkrement/dekrement)
+{
+   naredba;
+}
+
+primjer:
+
+int brojEnemja = 3;
+
+void Start()
+{
+  for(int i = 0; i < brojEnemja; i++)
+	{
+	  Debug.Log($"Stvorili smo: {i} neprijatelja");
+	}
+}
+
+//infinite loop
+for(int i = 1; i > 0; i++)
+{
+
+}
+
+for(int i = -1; i < 0; i--)
+{
+
+}
+
+
+85.) Zadatak za for petlju
+Napravite skriptu koja ima *maximalno* 3 if/else if petlji po metodi. Neka je svaki uvijet definiran bool-om.
+Prvi bool se zove "easy" drugi se zove "normal", a treci "harderDaddy".
+a) ako je svaki bool false na pocetku, neka bool "normal" postane true
+b) svaki bool mora biti javan
+c) za uvijet easy neka se broj enemy-a (varijabla enemies) stavi na 5 i neka joj je to pocetna vrijednost (varijable)
+d) Ako je igra na normal onda neka je broj enemya dva puta veci od easy nacina
+e) Ako je igra na harderDaddy onda neka je broj enemya tri puta veci nego u normal nacinu igre
+f) Nakon što se provjeri koji je mod igre (težina, odnosno koji je bool tocan), neka se ispiše u konzoli svaki enemy posebno kao u primjeru: Debug.Log("Stvoren je " + i + ". enemy!") - npr. Stvoren je 3. enemy | Stvoren je 10. enemy
+g) Kada su se ispisali svi enemy-i (prestala je for petlja iz zadataka) neka se ispiše poruka "Sretno ti u " + težina igre + " nacinu igre!" - npr. Sretno ti u easy nacinu igre!
+
+
+public bool easy;
+public bool normal;
+public bool harderDaddy;
+int enemies = 5;
+
+void Start()
+{
+  if(easy /*easy == true*/)
+	{
+	  Spawn();
+	  Debug.Log("Sretno ti u easy nacinu igre!");
+	}
+  else if(harderDaddy /*harderDaddy == true*/)
+	{
+	  enemies *= 6;
+	  Spawn();
+	  Debug.Log("Sretno ti u harderDaddy nacinu igre!");
+	}
+else 
+	{
+	  normal = true;
+	  enemies *= 2;
+	  Spawn();
+	  Debug.Log("Sretno ti u normal nacinu igre!");
+	}
+}
+
+void Spawn()
+{
+  for(int i = 0; i <  enemies; i++)
+	{
+	  Debug.Log("Stvoren je " + i + ". enemy!");
+	}
+}
+
+
+*Ponavljanje*
+
+86.) Kakav zapis ide u vrstu varijable int?
+
+Cijeli broj, npr: 3, 7, 9, 0, -14
+
+87.) Kakav zapis ide u vrstu varijable float?
+
+Decimalni broj, npr: 6.9f, -31f, 0.0f
+
+88.) Kakav zapis ide u vrstu varijable bool?
+
+True ili false
+
+89.) Ako je int ostavljen prazan, vrijednost mu je?
+
+Null odnosno 0
+
+90.) Ako je bool ostavljen prazan, vrijednost mu je?
+
+Null odnosno false
+
+91.) Napisite programski matematicke zapise
+5 * (22 - 11) / 8 = x
+9 * 7 * x / z = y
+x * 88 -111 = z
+
+float x;
+float y;
+float z;
+
+void Start()
+{
+  x = 5 * (22 - 11) / 8;
+  z = x * 88 -111;
+  y = 9 * 7 * x / z;
+}
+
+92.) Koja je razlika izmedju 3 standardne metode sa primjerom funkcionalnosti iz pravih igara:
+a) Awake - na nultom frame-u, samo jednom. npr. Pokretanje loadinga, stvaranje sobe u multiplayeru, spawnanje enemy-a, spawnanje iz baze i pokretanje timera minuona iz League of Legends-a
+
+b) Start - na prvom frame-u, samo jednom. npr. Postavljanje vrijednoti health-a, zadan objective u Dead Islandu
+
+c) Update - svaki frame, npr. counter vremena, input kontrola, inventory, broj enemija u Serious Sam
+
+93.) Prepišite skriptu i prepravite greške i dodajte komentare:
+
+int x = 11:
+float nm = 2.4;
+flaot z = 0f;
+
+void Start
+(
+	z == nM * 2.5 - X;
+)
+
+----------------------
+
+ispravak
+
+int x = 11;
+float nm = 2.4f;
+float z = 0f;
+
+void Start()
+{
+	z = nm * 2.5f - x;
+}
+
+94.) x je javan broj koji je 100. Ispisi u konzoli sve parne brojeve od 0 do x
+
+
+public int x = 100;
+
+void Start()
+{
+	for(int i = 0; i < x; i += 2)
+		{
+			Debug.Log(i);
+		}
+}
+
+95.) Napisi primjer for petlje.
+
+
+void Start()
+{
+  for(int i = 0; i < 100; i++)
+	{
+	  Debug.Log(i);
+	}
+}
+
+96.) Prepisite skriptu i prepravite greske.
+
+flaoat X_X = 67f;
+publik float xD:
+private float c_N = 99.54321f;
+
+void Update()
+{
+	if(X_X * xD - cn >= 69.22 * 2;
+	[
+		X_X -- 19;
+		xD *= 1.2f;
+		c_M -= 1,1f;
+	]
+
+-------ispravak-----------
+
+float X_X = 67f;
+public float xD;
+private float c_N = 99.54321f;
+
+void Update()
+{
+
+	if (X_X * xD - c_N >= 69.22f *2)
+		{
+			X_X -= 19;
+			xD *= 1.2f;
+			c_N -= 1.1f;
+		}
+}
+
+
+97.)Prepišite skriptu i prepravite greške te joj napišite komentare
+
+boll marmun = false;
+intx = 11:
+int z = 12;
+int y:
+
+void Start[]
+{
+	if(x / 11 & z - 12 = 1)
+	{
+		marmun = true;
+		y = z * X;
+}
+
+Void Update()
+{
+	y = y * Z * x:
+}
 
 
 
+**string**
+
+string je tekstualni zapis, mogu se zapisivati rijeci, brojevi i znakovi
+
+npr.
+string ime = "Tomislav";
+string prezime = "Tomašević";
+string datumRodjenja = "19.02.1978.";
+string visina = "169 cm";
+
+var test = 420 + 6.9f + "Elon Musk"; //string
+//426.9Elon Musk
 
 
+98.) Napisite skriptu koja ucitava upisane javne vrijednosti za igracevo ime, prezime, broj godina (int), visinu (int), te grad iz kojeg dolazi. U metodi start se trebaju ispisati u konzoli sve njegove vrijednosti.
+npr. "Ja sam Marko Marić. Imam 28 godina, visok sam 169 cm i dolazim iz mjesta koje se zove Špičkovina".
+
+public string ime;
+public string prezime;
+public int godina;
+public int visina;
+public string grad;
+
+void Start()
+{
+	Debug.Log($"Ja sam {ime} {prezime}. Imam {godina} godina, visok sam {visina} cm i dolazim iz mjesta koje se zove {grad}.");
+}
+
+99.) Napišite skriptu koja ucitava javne vrijednosti, zatim te podatke ispisuje u navedeni tekst:
+"Moje ime je _________ i ja dolazim iz grada koji se zove ___________, a višlji sam od covjeka koji se zove __________ za ______ cm". To znaci da morate imati u kodu ucitavanje 2 vrijednosti imena, 2 vrijednosti visine i 2 vrijednosti grada, te dvije solucije teksta ovisno o tome koji je lik višlji.
 
 
 
