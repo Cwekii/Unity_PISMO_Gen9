@@ -1101,6 +1101,34 @@ x - y / (a * b) + x * a / 18 / b + x - y + 23 = rez
 Onda neka se u updateu rezultat povecava za jedan i ispisuje "Ja sam rezultat: " + rezultat
 
 
+public float x;
+public float a;
+public float b;
+public float y;
+public float rez;
+publi bool veci;
+
+void Start()
+{
+	var rez1 = x + y * (a / b) - x / a * 18 * b - x + y;
+	var rez2 = x - y / (a * b) + x * a / 18 / b + x - y + 23;
+
+	if(rez1 > rez2 )
+	{
+		veci = true;
+	}
+
+}
+
+void Update()
+{
+	if(veci)
+	{
+		rez++;
+		Debug.Log("Ja sam rezultat" + rez);
+	}
+}
+
 79.) Napisite skriptu gdje imate jedan bool i jedan javni broj. Ako je javni broj razlicit od 18 onda neka se pozove metoda MjenjajMe koja mjenja vrijednost tako da ako je bool bio true, da bude false, a ako je bio false da ga pretvori u true.
 
 public int x;
@@ -1459,7 +1487,124 @@ void Start()
 }
 
 99.) Napišite skriptu koja ucitava javne vrijednosti, zatim te podatke ispisuje u navedeni tekst:
-"Moje ime je _________ i ja dolazim iz grada koji se zove ___________, a višlji sam od covjeka koji se zove __________ za ______ cm". To znaci da morate imati u kodu ucitavanje 2 vrijednosti imena, 2 vrijednosti visine i 2 vrijednosti grada, te dvije solucije teksta ovisno o tome koji je lik višlji.
+"Moje ime je _________ i ja dolazim iz grada koji se zove ___________, a višlji sam od covjeka koji se zove __________ za ______ cm". To znaci da morate imati u kodu ucitavanje 2 vrijednosti imena, 2 vrijednosti visine i 2 vrijednosti grada, te dvije solucije teksta ovisno o tome koji je lik viši.
+
+public string ime1;
+public string ime2;
+public string grad1;
+public string grad2;
+public int visina1;
+public int visina2;
+
+void Start()
+{
+	if(visina1 > visina2)
+	{
+		Debug.Log($"Moje ime je {ime1} i ja dolazim iz grada {grad1}, a viši sam od covjeka koji se zove {ime2} za {visina1 - visina2} cm.")
+	}
+
+	else if(visina1 < visina2)
+	{
+		Debug.Log($"Moje ime je {ime2} i ja dolazim iz grada {grad2}, a viši sam od covjeka koji se zove {ime1} za {visina2 - visina1} cm.")
+	}
+}
+
+
+**WHILE**
+
+- dok je tvrdnja tocna
+OPASNA ZA UNITY!!! - ako je krivo napisana ruši Unity, ali u gorim situacijama moze izbrisati dio projekta i/ili ugasiti racunalo
+
+
+npr.
+while(uvijet)
+{
+	naredba;
+	naredba koja utjece na uvijet;
+}
+
+infinity loop - beskonacna petlja kojoj se nikada ne moze promjeniti uvijet
+
+
+pravilno napisana:
+
+int broj = 4;
+
+while(broj > 0)
+{
+	broj--;
+	Debug.Log($"Broj je: {broj}");
+}
+
+
+infinity loop:
+
+int broj = 4;
+
+while(broj > 0)
+{
+	broj++;
+	Debug.Log($"Broj je: {broj}");
+}
+
+
+100.) Napišite while petlju koja je istina dok je int x vece ili jednako od 0. U while petlji treba biti naredba koja x smanjuje za 2, te ispisuje u konzoli "Ja volim" + x.
+
+int x;
+
+void Start()
+{
+	while(x >= 0)
+	{
+		x -= 2;
+		Debug.Log($"Ja volim {x}");
+	}
+}
+101.) Napisite skriptu koja ce ugasiti igru ako je slucajno igracev health pao ispod 0 ili je 0.
+Naredba koja gasi igru (.exe) se pise: Application.Quit();
+
+float hp;
+
+void Update()
+{
+	if(hp <= 0)
+	{
+		Application.Quit();	
+	}
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
